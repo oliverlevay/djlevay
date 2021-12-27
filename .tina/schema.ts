@@ -1,40 +1,55 @@
-import { defineSchema } from '@tinacms/cli'
+import { defineSchema } from "@tinacms/cli";
 
 export default defineSchema({
   collections: [
     {
-      label: 'Page Content',
-      name: 'page',
-      path: 'content/page',
+      label: "Page Content",
+      name: "page",
+      format: "mdx",
+      path: "content/page",
       fields: [
+        { type: "string", label: "Title", name: "title" },
         {
-          name: 'body',
-          label: 'Main Content',
-          type: 'rich-text',
+          name: "body",
+          label: "Main Content",
+          type: "rich-text",
           isBody: true,
+          templates: [
+            {
+              name: "SoundCloudPlaylist",
+              label: "Sound Cloud Playlist",
+              fields: [
+                {
+                  name: "url",
+                  label: "Url",
+                  type: "string",
+                },
+              ],
+            },
+          ],
         },
       ],
     },
     {
-      label: 'Blog Posts',
-      name: 'post',
-      path: 'content/post',
+      label: "Blog Posts",
+      name: "post",
+      path: "content/post",
       fields: [
         {
-          type: 'string',
-          label: 'Title',
-          name: 'title',
+          type: "string",
+          label: "Title",
+          name: "title",
         },
         {
-          type: 'string',
-          label: 'Blog Post Body',
-          name: 'body',
+          type: "string",
+          label: "Blog Post Body",
+          name: "body",
           isBody: true,
           ui: {
-            component: 'textarea',
+            component: "textarea",
           },
         },
       ],
     },
   ],
-})
+});

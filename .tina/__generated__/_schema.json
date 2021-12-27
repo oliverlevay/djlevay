@@ -3,13 +3,47 @@
     {
       "label": "Page Content",
       "name": "page",
+      "format": "mdx",
       "path": "content/page",
       "fields": [
+        {
+          "type": "string",
+          "label": "Title",
+          "name": "title",
+          "namespace": [
+            "page",
+            "title"
+          ]
+        },
         {
           "name": "body",
           "label": "Main Content",
           "type": "rich-text",
           "isBody": true,
+          "templates": [
+            {
+              "name": "SoundCloudPlaylist",
+              "label": "Sound Cloud Playlist",
+              "fields": [
+                {
+                  "name": "url",
+                  "label": "Url",
+                  "type": "string",
+                  "namespace": [
+                    "page",
+                    "body",
+                    "SoundCloudPlaylist",
+                    "url"
+                  ]
+                }
+              ],
+              "namespace": [
+                "page",
+                "body",
+                "SoundCloudPlaylist"
+              ]
+            }
+          ],
           "namespace": [
             "page",
             "body"

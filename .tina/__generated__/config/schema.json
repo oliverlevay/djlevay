@@ -3,13 +3,32 @@
     {
       "label": "Page Content",
       "name": "page",
+      "format": "mdx",
       "path": "content/page",
       "fields": [
+        {
+          "type": "string",
+          "label": "Title",
+          "name": "title"
+        },
         {
           "name": "body",
           "label": "Main Content",
           "type": "rich-text",
-          "isBody": true
+          "isBody": true,
+          "templates": [
+            {
+              "name": "SoundCloudPlaylist",
+              "label": "Sound Cloud Playlist",
+              "fields": [
+                {
+                  "name": "url",
+                  "label": "Url",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
         }
       ]
     },

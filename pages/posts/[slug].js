@@ -1,19 +1,18 @@
-import { staticRequest } from 'tinacms'
-import { Layout } from '../../components/Layout'
+import { staticRequest } from "tinacms";
 export default function Home(props) {
   return (
-    <Layout>
+    <main>
       <code>
         <pre
           style={{
-            backgroundColor: 'lightgray',
+            backgroundColor: "lightgray",
           }}
         >
           {JSON.stringify(props.data.getPostDocument.data, null, 2)}
         </pre>
       </code>
-    </Layout>
-  )
+    </main>
+  );
 }
 
 export const getStaticPaths = async () => {
@@ -30,16 +29,16 @@ export const getStaticPaths = async () => {
         }
       }`,
     variables: {},
-  })
+  });
   const paths = tinaProps.getPostList.edges.map((x) => {
-    return { params: { slug: x.node.sys.filename } }
-  })
+    return { params: { slug: x.node.sys.filename } };
+  });
 
   return {
     paths,
-    fallback: 'blocking',
-  }
-}
+    fallback: "blocking",
+  };
+};
 export const getStaticProps = async (ctx) => {
   const query = `query getPost($relativePath: String!) {
     getPostDocument(relativePath: $relativePath) {
@@ -49,16 +48,16 @@ export const getStaticProps = async (ctx) => {
       }
     }
   }
-  `
+  `;
   const variables = {
-    relativePath: ctx.params.slug + '.md',
-  }
-  let data = {}
+    relativePath: ctx.params.slug + ".md",
+  };
+  let data = {};
   try {
     data = await staticRequest({
       query,
       variables,
-    })
+    });
   } catch (error) {
     // swallow errors related to document creation
   }
@@ -69,5 +68,5 @@ export const getStaticProps = async (ctx) => {
       query,
       variables,
     },
-  }
-}
+  };
+};
