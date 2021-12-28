@@ -28,6 +28,33 @@ export default defineSchema({
             },
           ],
         },
+        {
+          name: "papers",
+          label: "Papers",
+          description: "Papers on the page",
+          type: "object",
+          list: true,
+          fields: [
+            {
+              label: "Paper content",
+              name: "paper",
+              type: "rich-text",
+              templates: [
+                {
+                  name: "SoundCloudPlaylist",
+                  label: "Sound Cloud Playlist",
+                  fields: [
+                    {
+                      name: "url",
+                      label: "Url",
+                      type: "string",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {

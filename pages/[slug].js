@@ -13,17 +13,25 @@ const components = {
 export default function Home(props) {
   /** @type {import('../.tina/__generated__/types').GetPageDocumentQuery['getPageDocument']['data']} */
   const pageDocument = props.data.getPageDocument.data;
+  console.log(pageDocument);
   return (
     <>
       <Head>
         <title>{pageDocument.title}</title>
       </Head>
       <main>
-        <Paper style={{ width: "fit-content" }}>
-          <Stack padding="2rem">
-            <TinaMarkdown components={components} content={pageDocument.body} />
-          </Stack>
-        </Paper>
+        <Stack style={{ width: "100%", maxWidth: "700px" }}>
+          <TinaMarkdown components={components} content={pageDocument.body} />
+          {pageDocument.papers?.map((paper) => {
+            return (
+              <Paper style={{ width: "100%", marginBottom: "2rem" }}>
+                <Stack padding={{ xs: "0.5rem 1rem", md: "1rem" }}>
+                  <TinaMarkdown components={components} content={paper.paper} />
+                </Stack>
+              </Paper>
+            );
+          })}
+        </Stack>
       </main>
     </>
   );
@@ -62,6 +70,9 @@ export const getStaticProps = async ({ params }) => {
       data {
         title
         body
+        papers {
+          paper
+        }
       }
     }
   }`,

@@ -41,8 +41,18 @@ const App = ({
         >
           <GlobalStyles
             styles={{
+              "*": {
+                margin: 0,
+              },
+              p: {
+                margin: "0.25rem 0",
+              },
               img: {
                 maxWidth: "100%",
+              },
+              a: {
+                color: "var(--tina-color-primary)",
+                textDecoration: "none",
               },
               main: {
                 h1: {
@@ -72,6 +82,9 @@ const App = ({
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+              },
+              h2: {
+                fontSize: "2rem",
               },
             }}
           />

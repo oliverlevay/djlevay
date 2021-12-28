@@ -79,9 +79,14 @@ type Collection {
 
 union DocumentNode = PageDocument | PostDocument
 
+type PagePapers {
+  paper: JSON
+}
+
 type Page {
   title: String
   body: JSON
+  papers: [PagePapers]
 }
 
 type PageDocument implements Node & Document {
@@ -144,9 +149,14 @@ input DocumentMutation {
   post: PostMutation
 }
 
+input PagePapersMutation {
+  paper: JSON
+}
+
 input PageMutation {
   title: String
   body: JSON
+  papers: [PagePapersMutation]
 }
 
 input PostMutation {

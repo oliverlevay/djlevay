@@ -1,6 +1,10 @@
 fragment PageParts on Page {
   title
   body
+  papers {
+    __typename
+    paper
+  }
 }
 
 fragment PostParts on Post {
