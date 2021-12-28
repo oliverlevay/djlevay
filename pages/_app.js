@@ -24,29 +24,23 @@ const App = ({
 }) => {
   return (
     <CacheProvider value={emotionCache}>
-      <TinaEditProvider
-        editMode={
-          <TinaCMS
-            branch="main"
-            clientId={NEXT_PUBLIC_TINA_CLIENT_ID}
-            isLocalClient={isLocalClient}
-            branch={process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main"}
-            mediaStore={TinaCloudCloudinaryMediaStore}
-            {...pageProps}
-          >
-            {(livePageProps) => <Component {...livePageProps} />}
-          </TinaCMS>
-        }
-      >
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <TinaEditProvider
+          editMode={
+            <TinaCMS
+              branch="main"
+              clientId={NEXT_PUBLIC_TINA_CLIENT_ID}
+              isLocalClient={isLocalClient}
+              branch={process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main"}
+              mediaStore={TinaCloudCloudinaryMediaStore}
+              {...pageProps}
+            >
+              {(livePageProps) => <Component {...livePageProps} />}
+            </TinaCMS>
+          }
+        >
           <GlobalStyles
             styles={{
-              body: {
-                padding: "1rem",
-                [theme.breakpoints.up("md")]: {
-                  padding: "3rem",
-                },
-              },
               img: {
                 maxWidth: "100%",
               },
@@ -68,14 +62,23 @@ const App = ({
                   MozTextFillColor: "transparent",
                   filter: "drop-shadow(0 0 2rem #000)",
                   textShadow: "none !important",
+                  margin: 0,
+                  fontSize: "5rem",
                 },
+                padding: "1rem",
+                [theme.breakpoints.up("md")]: {
+                  padding: "3rem 5rem",
+                },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               },
             }}
           />
           <CssBaseline />
           <Component {...pageProps} />
-        </ThemeProvider>
-      </TinaEditProvider>
+        </TinaEditProvider>
+      </ThemeProvider>
     </CacheProvider>
   );
 };

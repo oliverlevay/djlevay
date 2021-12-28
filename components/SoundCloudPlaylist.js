@@ -1,13 +1,13 @@
 const SoundCloudPlaylist = ({ props: { url } }) => {
   return (
-    <>
+    <div style={{ width: "100%" }}>
       <iframe
         width="100%"
         height={300}
         scrolling="no"
         frameBorder="no"
         allow="autoplay"
-        style={{ maxWidth: "600px", borderRadius: "10px" }}
+        style={{ maxWidth: "600px", borderRadius: "10px", marginTop: "1rem" }}
         src={`https://w.soundcloud.com/player/?url=${url}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
       />
       <div
@@ -42,7 +42,7 @@ const SoundCloudPlaylist = ({ props: { url } }) => {
           Pontas julfest
         </a>
       </div>
-    </>
+    </div>
   );
 };
 

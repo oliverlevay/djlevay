@@ -1,3 +1,4 @@
+import { Stack, Paper } from "@mui/material";
 import SoundCloudPlaylist from "components/SoundCloudPlaylist";
 import Head from "next/head";
 import { getStaticPropsForTina } from "tinacms";
@@ -18,7 +19,11 @@ export default function Home(props) {
         <title>{pageDocument.title}</title>
       </Head>
       <main>
-        <TinaMarkdown components={components} content={pageDocument.body} />
+        <Paper style={{ width: "fit-content" }}>
+          <Stack padding="2rem">
+            <TinaMarkdown components={components} content={pageDocument.body} />
+          </Stack>
+        </Paper>
       </main>
     </>
   );
