@@ -1,14 +1,4 @@
-import { useEffect, useState } from "react";
-
-const generateSoundCloudSrc = (apiUrl) => {
-  return `https://w.soundcloud.com/player/?url=${apiUrl}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
-};
-
 const SoundCloudPlaylist = ({ props: { url } }) => {
-  const [src, setSrc] = useState("");
-  useEffect(() => {
-    setSrc(generateSoundCloudSrc(url));
-  }, [url]);
   return (
     <>
       <iframe
@@ -18,7 +8,7 @@ const SoundCloudPlaylist = ({ props: { url } }) => {
         frameBorder="no"
         allow="autoplay"
         style={{ maxWidth: "600px", borderRadius: "10px" }}
-        src={src}
+        src={`https://w.soundcloud.com/player/?url=${url}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
       />
       <div
         style={{
