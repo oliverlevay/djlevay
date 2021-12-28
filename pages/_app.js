@@ -51,7 +51,7 @@ const App = ({
                 maxWidth: "100%",
               },
               a: {
-                color: "var(--tina-color-primary)",
+                color: "#2296fe",
                 textDecoration: "none",
               },
               main: {
