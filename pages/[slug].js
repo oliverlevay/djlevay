@@ -1,4 +1,4 @@
-import { Stack, Paper } from "@mui/material";
+import { Stack, Paper, Button } from "@mui/material";
 import SoundCloudPlaylist from "components/SoundCloudPlaylist";
 import Head from "next/head";
 import { getStaticPropsForTina } from "tinacms";
@@ -20,27 +20,48 @@ export default function Home(props) {
       </Head>
       <main>
         <Stack style={{ width: "100%", maxWidth: "700px" }}>
+          <Stack component="nav" direction="row" spacing={1}>
+            {pageDocument.papers?.map((paperItem, index) => (
+              <>
+                {paperItem.visibleInNavigation && (
+                  <Button
+                    key={`${paperItem.title}-nav${index}`}
+                    onClick={() => {
+                      const paper = document.getElementById(`paper-${index}`);
+                      paper.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    {paperItem.title}
+                  </Button>
+                )}
+              </>
+            ))}
+          </Stack>
           <TinaMarkdown components={components} content={pageDocument.body} />
-          {pageDocument.papers?.map((paper) => {
-            return (
-              <Paper
-                sx={{
-                  width: "100%",
-                  margin: "1rem 0",
-                  img: {
-                    width: "calc(100% + 2rem)",
-                    marginLeft: "-1rem",
-                    marginBottom: "-1.1rem",
-                    marginTop: "0.5rem",
-                  },
-                }}
-              >
-                <Stack padding={{ xs: "0.5rem 1rem" }}>
-                  <TinaMarkdown components={components} content={paper.paper} />
-                </Stack>
-              </Paper>
-            );
-          })}
+          {pageDocument.papers?.map((paperItem, index) => (
+            <Paper
+              key={`paper-${index}`}
+              id={`paper-${index}`}
+              sx={{
+                width: "100%",
+                margin: "1rem 0",
+                img: {
+                  width: "calc(100% + 2rem)",
+                  marginLeft: "-1rem",
+                  marginBottom: "-1.1rem",
+                  marginTop: "0.5rem",
+                },
+              }}
+            >
+              <Stack padding={{ xs: "0.5rem 1rem" }}>
+                <h2>{paperItem.title}</h2>
+                <TinaMarkdown
+                  components={components}
+                  content={paperItem.paper}
+                />
+              </Stack>
+            </Paper>
+          ))}
         </Stack>
       </main>
     </>
@@ -81,7 +102,9 @@ export const getStaticProps = async ({ params }) => {
         title
         body
         papers {
+          title
           paper
+          visibleInNavigation
         }
       }
     }

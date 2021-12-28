@@ -64,6 +64,26 @@
           "list": true,
           "fields": [
             {
+              "label": "Title",
+              "name": "title",
+              "type": "string",
+              "namespace": [
+                "page",
+                "papers",
+                "title"
+              ]
+            },
+            {
+              "label": "Show in navigation",
+              "name": "visibleInNavigation",
+              "type": "boolean",
+              "namespace": [
+                "page",
+                "papers",
+                "visibleInNavigation"
+              ]
+            },
+            {
               "label": "Paper content",
               "name": "paper",
               "type": "rich-text",

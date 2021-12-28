@@ -3,6 +3,8 @@ fragment PageParts on Page {
   body
   papers {
     __typename
+    title
+    visibleInNavigation
     paper
   }
 }

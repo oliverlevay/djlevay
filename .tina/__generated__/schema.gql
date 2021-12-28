@@ -80,6 +80,8 @@ type Collection {
 union DocumentNode = PageDocument | PostDocument
 
 type PagePapers {
+  title: String
+  visibleInNavigation: Boolean
   paper: JSON
 }
 
@@ -150,6 +152,8 @@ input DocumentMutation {
 }
 
 input PagePapersMutation {
+  title: String
+  visibleInNavigation: Boolean
   paper: JSON
 }
 

@@ -36,6 +36,16 @@ export default defineSchema({
           list: true,
           fields: [
             {
+              label: "Title",
+              name: "title",
+              type: "string",
+            },
+            {
+              label: "Show in navigation",
+              name: "visibleInNavigation",
+              type: "boolean",
+            },
+            {
               label: "Paper content",
               name: "paper",
               type: "rich-text",
