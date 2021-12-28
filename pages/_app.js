@@ -14,8 +14,7 @@ const clientSideEmotionCache = createEmotionCache();
 const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
 
 const NEXT_PUBLIC_TINA_CLIENT_ID = process.env.NEXT_PUBLIC_TINA_CLIENT_ID;
-const NEXT_PUBLIC_USE_LOCAL_CLIENT =
-  process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT || true;
+const isLocalClient = process.env.NODE_ENV === "development";
 
 const App = ({
   Component,
@@ -25,12 +24,12 @@ const App = ({
   return (
     <CacheProvider value={emotionCache}>
       <TinaEditProvider
-        showEditButton={true}
         editMode={
           <TinaCMS
             branch="main"
             clientId={NEXT_PUBLIC_TINA_CLIENT_ID}
-            isLocalClient={Boolean(Number(NEXT_PUBLIC_USE_LOCAL_CLIENT))}
+            isLocalClient={isLocalClient}
+            branch={process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main"}
             {...pageProps}
           >
             {(livePageProps) => <Component {...livePageProps} />}
