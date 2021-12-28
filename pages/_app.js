@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { TinaEditProvider } from "tinacms/dist/edit-state";
+import { TinaCloudCloudinaryMediaStore } from "next-tinacms-cloudinary";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
@@ -30,6 +31,7 @@ const App = ({
             clientId={NEXT_PUBLIC_TINA_CLIENT_ID}
             isLocalClient={isLocalClient}
             branch={process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main"}
+            mediaStore={TinaCloudCloudinaryMediaStore}
             {...pageProps}
           >
             {(livePageProps) => <Component {...livePageProps} />}
@@ -44,6 +46,9 @@ const App = ({
                 [theme.breakpoints.up("md")]: {
                   padding: "3rem",
                 },
+              },
+              img: {
+                maxWidth: "100%",
               },
               main: {
                 h1: {

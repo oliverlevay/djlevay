@@ -7,7 +7,7 @@ const SoundCloudPlaylist = ({ props: { url } }) => {
         scrolling="no"
         frameBorder="no"
         allow="autoplay"
-        style={{ maxWidth: "600px" }}
+        style={{ maxWidth: "600px", borderRadius: "10px" }}
         src={`https://w.soundcloud.com/player/?url=${url}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
       />
       <div
