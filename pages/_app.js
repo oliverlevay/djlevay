@@ -58,9 +58,6 @@ const App = ({
               p: {
                 margin: "0.25rem 0",
               },
-              img: {
-                maxWidth: "100%",
-              },
               a: {
                 color: "#2296fe",
                 textDecoration: "none",

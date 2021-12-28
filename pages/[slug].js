@@ -23,8 +23,19 @@ export default function Home(props) {
           <TinaMarkdown components={components} content={pageDocument.body} />
           {pageDocument.papers?.map((paper) => {
             return (
-              <Paper style={{ width: "100%", margin: "1rem 0" }}>
-                <Stack padding={{ xs: "0.5rem 1rem", md: "1rem" }}>
+              <Paper
+                sx={{
+                  width: "100%",
+                  margin: "1rem 0",
+                  img: {
+                    width: "calc(100% + 2rem)",
+                    marginLeft: "-1rem",
+                    marginBottom: "-1.1rem",
+                    marginTop: "0.5rem",
+                  },
+                }}
+              >
+                <Stack padding={{ xs: "0.5rem 1rem" }}>
                   <TinaMarkdown components={components} content={paper.paper} />
                 </Stack>
               </Paper>
