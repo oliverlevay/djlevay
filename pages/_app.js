@@ -43,6 +43,7 @@ const App = ({
             styles={{
               "*": {
                 margin: 0,
+                fontFamily: "'Roboto', sans-serif",
               },
               p: {
                 margin: "0.25rem 0",
@@ -74,6 +75,7 @@ const App = ({
                   textShadow: "none !important",
                   margin: 0,
                   fontSize: "5rem",
+                  fontFamily: "'Chakra Petch', sans-serif",
                 },
                 padding: "1rem",
                 [theme.breakpoints.up("md")]: {

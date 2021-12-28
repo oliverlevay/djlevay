@@ -13,7 +13,6 @@ const components = {
 export default function Home(props) {
   /** @type {import('../.tina/__generated__/types').GetPageDocumentQuery['getPageDocument']['data']} */
   const pageDocument = props.data.getPageDocument.data;
-  console.log(pageDocument);
   return (
     <>
       <Head>
