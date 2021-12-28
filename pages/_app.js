@@ -7,6 +7,7 @@ import { CacheProvider } from "@emotion/react";
 import { GlobalStyles } from "@mui/material";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
+import { useEffect } from "react";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -22,6 +23,15 @@ const App = ({
   pageProps,
   emotionCache = clientSideEmotionCache,
 }) => {
+  useEffect(() => {
+    window.onload = () => {
+      const h1Elements = document.getElementsByTagName("h1");
+      console.log(h1Elements);
+      for (const i = 0; i < h1Elements.length; i++) {
+        h1Elements[i].title = h1Elements[i].innerText;
+      }
+    };
+  }, []);
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
@@ -57,22 +67,6 @@ const App = ({
               },
               main: {
                 h1: {
-                  backgroundImage: `linear-gradient(
-                    -90deg,
-                    #adfbda 0,
-                    #35c3ff 30%,
-                    #fda399 50%,
-                    #76d880 70%,
-                    #ebf38b 90%,
-                    #adfbda 100%
-                  )`,
-                  backgroundSize: "100%",
-                  backgroundRepeat: "repeat",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  MozTextFillColor: "transparent",
-                  filter: "drop-shadow(0 0 2rem #000)",
-                  textShadow: "none !important",
                   margin: 0,
                   fontSize: "5rem",
                   fontFamily: "'Chakra Petch', sans-serif",
