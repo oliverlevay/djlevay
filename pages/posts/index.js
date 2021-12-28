@@ -1,10 +1,9 @@
-import { getStaticPropsForTina } from 'tinacms'
-import { Layout } from '../../components/Layout'
-import Link from 'next/link'
+import { getStaticPropsForTina } from "tinacms";
+import Link from "next/link";
 export default function Home(props) {
-  const postsList = props.data.getPostList.edges
+  const postsList = props.data.getPostList.edges;
   return (
-    <Layout>
+    <main>
       <h1>Posts</h1>
       <div>
         {postsList.map((post) => (
@@ -15,8 +14,8 @@ export default function Home(props) {
           </div>
         ))}
       </div>
-    </Layout>
-  )
+    </main>
+  );
 }
 
 export const getStaticProps = async () => {
@@ -34,11 +33,11 @@ export const getStaticProps = async () => {
         }
       }`,
     variables: {},
-  })
+  });
 
   return {
     props: {
       ...tinaProps,
     },
-  }
-}
+  };
+};
